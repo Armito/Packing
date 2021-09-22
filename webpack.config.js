@@ -1,25 +1,27 @@
 /*
  * @Author: your name
  * @Date: 2021-09-22 13:38:51
- * @LastEditTime: 2021-09-22 13:51:24
+ * @LastEditTime: 2021-09-22 14:29:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Packing\webpack.config.js
  */
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+    entry: {
+        index: './src/index.js',
+        print: './src/print.js'
     },
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
-            }
-        ]
-    }
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: '管理输出'
+        })
+    ]
 };
