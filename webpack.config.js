@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-22 13:38:51
- * @LastEditTime: 2021-09-22 14:45:10
+ * @LastEditTime: 2021-09-22 15:07:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Packing\webpack.config.js
@@ -18,7 +18,7 @@ module.exports = {
     },
     entry: {
         index: './src/index.js',
-        print: './src/print.js'
+        another: './src/another-module.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -27,7 +27,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: '开发环境'
+            title: '代码分离'
         })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
 };
